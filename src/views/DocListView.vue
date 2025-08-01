@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch } from 'vue'
-import { HmacAuthService } from '@/ts/hmacAuthService'
+// import { HmacAuthService } from '@/ts/hmacAuthService'
 import type { Document, DocumentFilters } from '@/types/docListTypes'
-import api from '@/api'
+// import api from '@/api'
 import type { ApiConfig } from '@/types/hmacAPITypes'
-import { useTokenStore } from '@/stores/tokenStore'
+// import { useTokenStore } from '@/stores/tokenStore'
 
-const tokenStore = useTokenStore()
+// const tokenStore = useTokenStore()
 
 // Types
 interface ApiResponse {
@@ -18,102 +18,102 @@ const documents = ref<Document[]>([])
 const loading = ref(false)
 const error = ref<string | null>(null)
 
-const apiConfig: ApiConfig = {
-  apiEndpoint: '/documents',
-  apiMethod: 'GET',
-  clientId: tokenStore.clientId,
-  clientSecret: tokenStore.secretKey,
-  // requestBody: '', (GET Request, no body)
-  // additionalHeaders: '{"Content-Type": "application/json"}',
-}
+// const apiConfig: ApiConfig = {
+//   apiEndpoint: '/documents',
+//   apiMethod: 'GET',
+// clientId: tokenStore.clientId,
+// clientSecret: tokenStore.secretKey,
+// requestBody: '', (GET Request, no body)
+// additionalHeaders: '{"Content-Type": "application/json"}',
+// }
 
-const filters = reactive<DocumentFilters>({
-  page: 1,
-  limit: 8,
-  category: '',
-  signing_status: '',
-  stamping_status: '',
-})
+// const filters = reactive<DocumentFilters>({
+//   page: 1,
+//   limit: 8,
+//   category: '',
+//   signing_status: '',
+//   stamping_status: '',
+// })
 // Methods
-const fetchDocuments = async (): Promise<void> => {
-  try {
-    loading.value = true
-    error.value = null
+// const fetchDocuments = async (): Promise<void> => {
+//   try {
+//     loading.value = true
+//     error.value = null
 
-    //Pre build URL with query params before generating signature
-    const queryParams = new URLSearchParams()
+//     //Pre build URL with query params before generating signature
+//     const queryParams = new URLSearchParams()
 
-    //add non empty filter values
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value !== '' && value !== null && value !== undefined) {
-        queryParams.append(key, String(value))
-      }
-    })
+//     //add non empty filter values
+//     Object.entries(filters).forEach(([key, value]) => {
+//       if (value !== '' && value !== null && value !== undefined) {
+//         queryParams.append(key, String(value))
+//       }
+//     })
 
-    const queryString = queryParams.toString()
-    const pathQuery = queryString ? `/documents?${queryString}` : `/documents`
+//     const queryString = queryParams.toString()
+//     const pathQuery = queryString ? `/documents?${queryString}` : `/documents`
 
-    // Generate signature for the complete URL path
-    const configWithQuery = {
-      ...apiConfig,
-      apiUrl: pathQuery,
-    }
+//     // Generate signature for the complete URL path
+//     const configWithQuery = {
+//       ...apiConfig,
+//       apiUrl: pathQuery,
+//     }
 
-    let tempHeader = await HmacAuthService.generateSignature(apiConfig)
-    let headers = HmacAuthService.buildRequestHeaders(tempHeader)
+//     let tempHeader = await HmacAuthService.generateSignature(apiConfig)
+//     let headers = HmacAuthService.buildRequestHeaders(tempHeader)
 
-    console.log(tempHeader)
-    console.log(`Auth : ${tempHeader.authHeader}`)
-    console.log(`Date: ${tempHeader.dateFormat}`)
-    console.log(headers)
-    //merge default params with custom params
-    const response = await api.get<Document>(`${pathQuery}`, {
-      // params: filters,
-      headers: headers,
-    })
-    console.log(response.data)
-  } catch (err) {
-    error.value = err instanceof Error ? err.message : 'An error occurred while fetching documents'
-    console.error('Error fetching documents:', err)
-  } finally {
-    loading.value = false
-  }
-}
+//     console.log(tempHeader)
+//     console.log(`Auth : ${tempHeader.authHeader}`)
+//     console.log(`Date: ${tempHeader.dateFormat}`)
+//     console.log(headers)
+//     //merge default params with custom params
+//     const response = await api.get<Document>(`${pathQuery}`, {
+//       // params: filters,
+//       headers: headers,
+//     })
+//     console.log(response.data)
+//   } catch (err) {
+//     error.value = err instanceof Error ? err.message : 'An error occurred while fetching documents'
+//     console.error('Error fetching documents:', err)
+//   } finally {
+//     loading.value = false
+//   }
+// }
 
-const getStampingStatusClass = (status: string): string => {
-  const statusClasses: Record<string, string> = {
-    success: 'bg-green-100 text-green-800',
-    pending: 'bg-yellow-100 text-yellow-800',
-    in_progress: 'bg-blue-100 text-blue-800',
-    failed: 'bg-red-100 text-red-800',
-    none: 'bg-gray-100 text-gray-800',
-  }
-  return statusClasses[status] || 'bg-gray-100 text-gray-800'
-}
+// const getStampingStatusClass = (status: string): string => {
+//   const statusClasses: Record<string, string> = {
+//     success: 'bg-green-100 text-green-800',
+//     pending: 'bg-yellow-100 text-yellow-800',
+//     in_progress: 'bg-blue-100 text-blue-800',
+//     failed: 'bg-red-100 text-red-800',
+//     none: 'bg-gray-100 text-gray-800',
+//   }
+//   return statusClasses[status] || 'bg-gray-100 text-gray-800'
+// }
 
-const formatStatus = (status: string): string => {
-  return status
-    .split('_')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-}
+// const formatStatus = (status: string): string => {
+//   return status
+//     .split('_')
+//     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+//     .join(' ')
+// }
 
 // Load initial data
-onMounted(async () => {
-  try {
-    fetchDocuments()
-  } catch (err: any) {
-    error.value = err
-    console.error(err)
-  } finally {
-    loading.value = false
-  }
-})
+// onMounted(async () => {
+//   try {
+//     fetchDocuments()
+//   } catch (err: any) {
+//     error.value = err
+//     console.error(err)
+//   } finally {
+//     loading.value = false
+//   }
+// })
 
 //Debug
-watch(filters, (filtersDebug) => {
-  console.log(filtersDebug)
-})
+// watch(filters, (filtersDebug) => {
+//   console.log(filtersDebug)
+// })
 </script>
 
 <template>
@@ -136,7 +136,6 @@ watch(filters, (filtersDebug) => {
           <div>
             <label class="block text-sm font-medium text-gray-400 mb-1">Page</label>
             <input
-              v-model.number="filters.page"
               type="number"
               min="1"
               class="w-full rounded-md border-1 border-neutral-600 p-2 hover:border-neutral-400 hover:bg-neutral-700 transition-all duration-500"
@@ -148,7 +147,6 @@ watch(filters, (filtersDebug) => {
           <div>
             <label class="block text-sm font-medium text-gray-400 mb-1">Limit</label>
             <input
-              v-model.number="filters.limit"
               type="number"
               min="1"
               max="100"
@@ -161,7 +159,6 @@ watch(filters, (filtersDebug) => {
           <div>
             <label class="block text-sm font-medium text-gray-400 mb-1">Category</label>
             <select
-              v-model="filters.category"
               class="w-full rounded-md border-1 border-neutral-600 p-2 hover:border-neutral-400 hover:bg-neutral-700 transition-all duration-500"
             >
               <option value="">All Categories</option>
@@ -174,7 +171,6 @@ watch(filters, (filtersDebug) => {
           <div>
             <label class="block text-sm font-medium text-gray-400 mb-1">Signing Status</label>
             <select
-              v-model="filters.signing_status"
               class="w-full rounded-md border-1 border-neutral-600 p-2 hover:border-neutral-400 hover:bg-neutral-700 transition-all duration-500"
             >
               <option value="">All Statuses</option>
@@ -187,7 +183,6 @@ watch(filters, (filtersDebug) => {
           <div class="col-span-2 md:col-span-4">
             <label class="block text-sm font-medium text-gray-400 mb-1">Stamping Status</label>
             <select
-              v-model="filters.stamping_status"
               class="w-full rounded-md border-1 border-neutral-600 p-2 hover:border-neutral-400 hover:bg-neutral-700 transition-all duration-500"
             >
               <option value="">All Stamping Statuses</option>
@@ -205,7 +200,6 @@ watch(filters, (filtersDebug) => {
         <!-- Search Button -->
         <div class="pt-5 flex justify-end">
           <button
-            @click="fetchDocuments"
             :disabled="loading"
             class="bg-blue-600 hover:bg-blue-300 disabled:bg-blue-400 text-white px-6 py-2 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
@@ -288,17 +282,14 @@ watch(filters, (filtersDebug) => {
                     <span class="font-medium">Signing Status:</span>
                     <span class="ml-1 px-2 py-1 rounded-full text-xs">
                       <!--  :class="getStatusClass(document.attributes.signing_status)" -->
-                      {{ formatStatus(document.attributes.signing_status) }}
+                      <!-- {{ formatStatus(document.attributes.signing_status) }} -->
                       <!-- {{ document.attributes.signing_status }} -->
                     </span>
                   </div>
                   <div v-if="document.attributes.stamping_status">
                     <span class="font-medium">Stamping Status:</span>
-                    <span
-                      class="ml-1 px-2 py-1 rounded-full text-xs"
-                      :class="getStampingStatusClass(document.attributes.stamping_status)"
-                    >
-                      {{ formatStatus(document.attributes.stamping_status) }}
+                    <span class="ml-1 px-2 py-1 rounded-full text-xs">
+                      <!-- {{ formatStatus(document.attributes.stamping_status) }} -->
                       <!-- {{ document.attributes.signing_status }} -->
                     </span>
                   </div>

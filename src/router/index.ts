@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
 // import ConfigView from '@/views/HomeView.vue'
 
 const router = createRouter({
@@ -7,13 +6,18 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'config',
       component: () => import('@/views/HomeView.vue'),
     },
     {
       path: '/list_documents',
-      name: 'list_documents',
+      name: 'list-documents',
       component: () => import('@/views/DocListView.vue'),
+    },
+    {
+      path: '/upload_documents',
+      name: 'upload-documents',
+      component: () => import('@/views/HomeView.vue'),
     },
 
     // {

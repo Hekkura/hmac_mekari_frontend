@@ -4,11 +4,11 @@ import HeaderElement from './components/HeaderElement.vue'
 </script>
 
 <template>
-  <div class="min-h-screen bg-neutral-900 text-gray-100 font-sans">
-    <div class="sticky top-0">
+  <div class="h-screen bg-neutral-900 text-gray-100 font-sans flex flex-row">
+    <div class="">
       <HeaderElement></HeaderElement>
     </div>
-    <div>
+    <div class="flex-1 overflow-y-auto">
       <RouterView></RouterView>
     </div>
   </div>

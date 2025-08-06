@@ -1,0 +1,260 @@
+{
+  "data": [
+    {
+      "id": "7227a86a-412e-4297-88b3-ce2747d63c56",
+      "type": "document",
+      "attributes": {
+        "filename": "filename.pdf",
+        "category": "global",
+        "doc_url": "/documents/7227a86a-412e-4297-88b3-ce2747d63c56/download",
+        "signing_status": "completed",
+        "stamping_status": "in_progress",
+        "type_of_meterai": "Dokumen lain-lain",
+        "signers": [],
+        "created_at": "2024-06-07T03:27:33.711Z",
+        "updated_at": "2024-06-07T03:27:38.720Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    },
+    {
+      "id": "ed782e1e-c13d-4ef2-a4b3-3f43cd19da18",
+      "type": "document",
+      "attributes": {
+        "filename": "filename.pdf",
+        "category": "global",
+        "doc_url": "/documents/ed782e1e-c13d-4ef2-a4b3-3f43cd19da18/download",
+        "signing_status": "completed",
+        "stamping_status": "in_progress",
+        "type_of_meterai": "Dokumen lain-lain",
+        "signers": [],
+        "created_at": "2024-06-07T03:26:30.717Z",
+        "updated_at": "2024-06-07T03:26:33.412Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    },
+    {
+      "id": "7c405e9c-74e2-4cd9-b416-3d3d97f99a9c",
+      "type": "document",
+      "attributes": {
+        "filename": "filename.pdf",
+        "category": "global",
+        "doc_url": "/documents/7c405e9c-74e2-4cd9-b416-3d3d97f99a9c/download",
+        "signing_status": "completed",
+        "stamping_status": "in_progress",
+        "type_of_meterai": "Dokumen lain-lain",
+        "signers": [],
+        "created_at": "2024-06-07T03:26:17.758Z",
+        "updated_at": "2024-06-07T03:26:23.016Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    },
+    {
+      "id": "16c37529-93d2-4315-aaeb-7de55bd6e8c3",
+      "type": "document",
+      "attributes": {
+        "filename": "filename.pdf",
+        "category": "global",
+        "doc_url": "/documents/16c37529-93d2-4315-aaeb-7de55bd6e8c3/download",
+        "signing_status": "completed",
+        "stamping_status": "in_progress",
+        "type_of_meterai": "Dokumen lain-lain",
+        "signers": [],
+        "created_at": "2024-06-07T03:26:08.929Z",
+        "updated_at": "2024-06-07T03:26:15.113Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    },
+    {
+      "id": "bb60d271-8997-4177-a9cd-8e384b8bb5f1",
+      "type": "document",
+      "attributes": {
+        "filename": "filename/2.pdf",
+        "category": "global",
+        "doc_url": "/documents/bb60d271-8997-4177-a9cd-8e384b8bb5f1/download",
+        "signing_status": "in_progress",
+        "stamping_status": "none",
+        "type_of_meterai": null,
+        "signers": [
+          {
+            "name": "Signer 1",
+            "email": "signer-esign1@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 2",
+            "email": "signer-esign2@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 3",
+            "email": "signer-esign3@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          }
+        ],
+        "created_at": "2024-06-07T00:40:20.708Z",
+        "updated_at": "2024-06-07T00:40:53.611Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    },
+    {
+      "id": "a170fbc8-6871-4008-9503-c7bec44e37c9",
+      "type": "document",
+      "attributes": {
+        "filename": "filename/2.pdf",
+        "category": "global",
+        "doc_url": "/documents/a170fbc8-6871-4008-9503-c7bec44e37c9/download",
+        "signing_status": "in_progress",
+        "stamping_status": "none",
+        "type_of_meterai": null,
+        "signers": [
+          {
+            "name": "Signer 1",
+            "email": "signer-esign1@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 2",
+            "email": "signer-esign2@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 3",
+            "email": "signer-esign3@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          }
+        ],
+        "created_at": "2024-06-07T00:36:47.045Z",
+        "updated_at": "2024-06-07T00:37:09.410Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    },
+    {
+      "id": "fa4b7d34-1d6b-414d-ba6b-fbc847d4ab18",
+      "type": "document",
+      "attributes": {
+        "filename": "filename/2.pdf",
+        "category": "global",
+        "doc_url": "/documents/fa4b7d34-1d6b-414d-ba6b-fbc847d4ab18/download",
+        "signing_status": "in_progress",
+        "stamping_status": "none",
+        "type_of_meterai": null,
+        "signers": [
+          {
+            "name": "Signer 1",
+            "email": "signer-esign1@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 2",
+            "email": "signer-esign2@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 3",
+            "email": "signer-esign3@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          }
+        ],
+        "created_at": "2024-06-06T09:45:09.179Z",
+        "updated_at": "2024-06-06T09:47:26.864Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    },
+    {
+      "id": "9aff80f4-8af8-4ee4-ba8e-2fb855df504c",
+      "type": "document",
+      "attributes": {
+        "filename": "filename/2.pdf",
+        "category": "global",
+        "doc_url": "/documents/9aff80f4-8af8-4ee4-ba8e-2fb855df504c/download",
+        "signing_status": "in_progress",
+        "stamping_status": "none",
+        "type_of_meterai": null,
+        "signers": [
+          {
+            "name": "Signer 1",
+            "email": "signer-esign1@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 2",
+            "email": "signer-esign2@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          },
+          {
+            "name": "Signer 3",
+            "email": "signer-esign3@yopmail.com",
+            "order": 0,
+            "status": "your_turn",
+            "signed_at": null,
+            "signing_url": null,
+            "is_autosign": false
+          }
+        ],
+        "created_at": "2024-06-06T09:27:23.957Z",
+        "updated_at": "2024-06-06T09:27:46.583Z",
+        "template_id": null,
+        "is_autosign": false
+      }
+    }
+  ],
+  "pagination": {
+    "current_page": 1,
+    "previous": null,
+    "next": 2,
+    "per_page": 8,
+    "total_pages": 128,
+    "count": 1023
+  }
+}

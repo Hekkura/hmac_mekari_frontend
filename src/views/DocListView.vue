@@ -1,119 +1,76 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch } from 'vue'
-// import { HmacAuthService } from '@/ts/hmacAuthService'
 import type { Document, DocumentFilters } from '@/types/docListTypes'
-// import api from '@/api'
-import type { ApiConfig } from '@/types/hmacAPITypes'
-// import { useTokenStore } from '@/stores/tokenStore'
-
-// const tokenStore = useTokenStore()
+import api from '@/./api/index.js'
 
 // Types
-interface ApiResponse {
-  data: Document[]
-}
+// interface ApiResponse {
+//   data: Document[]
+// }
 
 // Reactive data
 const documents = ref<Document[]>([])
 const loading = ref(false)
 const error = ref<string | null>(null)
 
-// const apiConfig: ApiConfig = {
-//   apiEndpoint: '/documents',
-//   apiMethod: 'GET',
-// clientId: tokenStore.clientId,
-// clientSecret: tokenStore.secretKey,
-// requestBody: '', (GET Request, no body)
-// additionalHeaders: '{"Content-Type": "application/json"}',
-// }
+const filters = reactive<DocumentFilters>({
+  page: 1,
+  limit: 8,
+  category: '',
+  signing_status: '',
+  stamping_status: '',
+})
 
-// const filters = reactive<DocumentFilters>({
-//   page: 1,
-//   limit: 8,
-//   category: '',
-//   signing_status: '',
-//   stamping_status: '',
-// })
-// Methods
-// const fetchDocuments = async (): Promise<void> => {
-//   try {
-//     loading.value = true
-//     error.value = null
+const getDocumentData = async () => {
+  loading.value = true
+  error.value = ''
 
-//     //Pre build URL with query params before generating signature
-//     const queryParams = new URLSearchParams()
+  try {
+    const response = await api.get('/documents')
+    documents.value = response.data
+    console.log(documents.value)
+  } catch (e: any) {
+    error.value = e.response?.data?.message || 'Failed to fetch documents data'
+    console.error('Documents List fetch error!')
+  } finally {
+    loading.value = false
+  }
+}
 
-//     //add non empty filter values
-//     Object.entries(filters).forEach(([key, value]) => {
-//       if (value !== '' && value !== null && value !== undefined) {
-//         queryParams.append(key, String(value))
-//       }
-//     })
+const getStampingStatusClass = (status: string): string => {
+  const statusClasses: Record<string, string> = {
+    success: 'bg-green-100 text-green-800',
+    pending: 'bg-yellow-100 text-yellow-800',
+    in_progress: 'bg-blue-100 text-blue-800',
+    failed: 'bg-red-100 text-red-800',
+    none: 'bg-gray-100 text-gray-800',
+  }
+  return statusClasses[status] || 'bg-gray-100 text-gray-800'
+}
 
-//     const queryString = queryParams.toString()
-//     const pathQuery = queryString ? `/documents?${queryString}` : `/documents`
-
-//     // Generate signature for the complete URL path
-//     const configWithQuery = {
-//       ...apiConfig,
-//       apiUrl: pathQuery,
-//     }
-
-//     let tempHeader = await HmacAuthService.generateSignature(apiConfig)
-//     let headers = HmacAuthService.buildRequestHeaders(tempHeader)
-
-//     console.log(tempHeader)
-//     console.log(`Auth : ${tempHeader.authHeader}`)
-//     console.log(`Date: ${tempHeader.dateFormat}`)
-//     console.log(headers)
-//     //merge default params with custom params
-//     const response = await api.get<Document>(`${pathQuery}`, {
-//       // params: filters,
-//       headers: headers,
-//     })
-//     console.log(response.data)
-//   } catch (err) {
-//     error.value = err instanceof Error ? err.message : 'An error occurred while fetching documents'
-//     console.error('Error fetching documents:', err)
-//   } finally {
-//     loading.value = false
-//   }
-// }
-
-// const getStampingStatusClass = (status: string): string => {
-//   const statusClasses: Record<string, string> = {
-//     success: 'bg-green-100 text-green-800',
-//     pending: 'bg-yellow-100 text-yellow-800',
-//     in_progress: 'bg-blue-100 text-blue-800',
-//     failed: 'bg-red-100 text-red-800',
-//     none: 'bg-gray-100 text-gray-800',
-//   }
-//   return statusClasses[status] || 'bg-gray-100 text-gray-800'
-// }
-
-// const formatStatus = (status: string): string => {
-//   return status
-//     .split('_')
-//     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-//     .join(' ')
-// }
+const formatStatus = (status: string): string => {
+  return status
+    .split('_')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
 
 // Load initial data
-// onMounted(async () => {
-//   try {
-//     fetchDocuments()
-//   } catch (err: any) {
-//     error.value = err
-//     console.error(err)
-//   } finally {
-//     loading.value = false
-//   }
-// })
+onMounted(async () => {
+  try {
+    getDocumentData()
+  } catch (err: any) {
+    error.value = err
+    console.error(err)
+  } finally {
+    loading.value = false
+  }
+})
 
 //Debug
-// watch(filters, (filtersDebug) => {
-//   console.log(filtersDebug)
-// })
+watch(filters, (filtersDebug) => {
+  console.log(filtersDebug)
+})
 </script>
 
 <template>

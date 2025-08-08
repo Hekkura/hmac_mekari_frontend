@@ -1,0 +1,8 @@
+{
+  "data": {
+    "message": "Not found",
+    "params": {}
+  },
+  "status": "not_found",
+  "error": true
+}

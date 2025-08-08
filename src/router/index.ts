@@ -10,14 +10,19 @@ const router = createRouter({
       component: () => import('@/views/HomeView.vue'),
     },
     {
-      path: '/list_documents',
+      path: '/documents',
       name: 'list-documents',
       component: () => import('@/views/DocListView.vue'),
     },
     {
+      path: '/documents/:id',
+      name: 'documents_detail',
+      component: () => import('../views/DocDetailView.vue'),
+    },
+    {
       path: '/upload_documents',
       name: 'upload-documents',
-      component: () => import('@/views/HomeView.vue'),
+      component: () => import('@/views/DocUploadView.vue'),
     },
 
     // {

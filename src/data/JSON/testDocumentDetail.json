@@ -1,0 +1,44 @@
+{
+  "data": {
+    "id": "5e19bde3-11c4-4f9b-b7a6-4d12bdd39a9b",
+    "type": "document",
+    "attributes": {
+      "filename": "doc.pdf",
+      "category": "global",
+      "doc_url": "https://sandbox-api.mekari.com/v2/esign/v1/documents/5e19bde3-11c4-4f9b-b7a6-4d12bdd39a9b/download",
+      "signing_status": "success",
+      "signers": [
+        {
+          "name": "Signer 1",
+          "email": "signer2@yopmail.com",
+          "order": 1,
+          "signing_status": "completed"
+        },
+        {
+          "name": "Signer 2",
+          "email": "signer2@yopmail.com",
+          "order": 2,
+          "signing_status": "your_turn"
+        },
+        {
+          "name": "Signer 3",
+          "email": "signer3@yopmail.com",
+          "order": 3,
+          "signing_status": "awaiting"
+        }
+      ],
+      "invalided": {
+        "type_of": "voided",
+        "reason": "Not good",
+        "invalid_by": {
+          "full_name": "Signer 1",
+          "email": "signer1@yopmail.com"
+        },
+        "invalid_at": "2024-10-15T02:21:29.719Z"
+      },
+      "stamping_status": "none",
+      "created_at": "2020-01-01 00:00:00",
+      "updated_at": "2020-01-01 00:00:00"
+    }
+  }
+}

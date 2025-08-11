@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import api from '@/./api/index.js'
 
 const file = ref<File | null>(null)
+const comply_psre = ref(false)
 const loading = ref(false)
+const error = ref<string | null>(null)
 
+//event.target handle for file input element.
 function handleFileChange(event: Event) {
   const target = event.target as HTMLInputElement
   if (target.files && target.files.length > 0) {
@@ -11,7 +15,44 @@ function handleFileChange(event: Event) {
   }
 }
 
-const postUploadDocument = async () => {}
+//Toggle Psre
+function togglePsre() {
+  comply_psre.value = !comply_psre.value
+  console.log(comply_psre.value)
+}
+
+const postUploadDocument = async () => {
+  if (!file.value) return
+  loading.value = true
+
+  //build form data
+  try {
+    const formData = new FormData()
+    formData.append('doc', file.value)
+    formData.append('comply_psre', String(comply_psre.value))
+
+    // const callbackUrl = `${window.location.origin}/api/documents/callback`
+    // formData.append('callback', callbackUrl)
+    // if (callbackUrl) {
+    //   formData.append('callback', callbackUrl)
+    // }
+
+    //request to backend
+    const response = await api.post(`/documents/upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+
+    console.log('Upload successful:', response.data)
+  } catch (err: any) {
+    error.value = err.response?.data?.message || 'Failed to Upload file'
+    console.error('Document upload error!')
+  } finally {
+    loading.value = false
+    file.value = null
+  }
+}
 </script>
 <template>
   <div
@@ -25,7 +66,35 @@ const postUploadDocument = async () => {}
         <p class="text-sm text-gray-500">Upload a signed document</p>
       </div>
 
-      <!-- Upload Box -->
+      <!-- Toggle PSRE box -->
+      <div class="flex flex-row gap-5 py-3 px-2 rounded-md border-1 border-gray-500 border-dashed">
+        <!-- Toggle Switch -->
+        <button
+          @click="togglePsre"
+          :class="[
+            'relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+            comply_psre ? 'bg-blue-500' : 'bg-neutral-700',
+          ]"
+          role="switch"
+        >
+          <!-- Toggle Circle -->
+          <span
+            :class="[
+              'inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out',
+              comply_psre ? 'translate-x-6' : 'translate-x-1',
+            ]"
+          ></span>
+        </button>
+
+        <label
+          @click="togglePsre"
+          class="text-sm font-medium text-gray-300 cursor-pointer select-none pt-1"
+        >
+          Comply with Psre?
+        </label>
+      </div>
+
+      <!-- Upload Box -- TODO : Add drag and drop function -->
       <label
         class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-8 cursor-pointer hover:border-blue-500 transition"
       >
@@ -60,8 +129,9 @@ const postUploadDocument = async () => {}
     <!-- Upload Button -->
     <div class="pt-5 flex justify-end" v-if="file">
       <button
-        :disabled="loading"
+        :disabled="loading || !file"
         class="cursor-pointer bg-blue-600 hover:bg-blue-300 disabled:bg-gray-700 text-white px-6 py-2 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+        @click="file && !loading && postUploadDocument()"
       >
         <span v-if="loading" class="flex items-center">
           <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">

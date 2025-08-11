@@ -56,7 +56,7 @@ onMounted(() => {
 
         <!-- Tooltip -->
         <div
-          class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity duration-200 z-50"
+          class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
         >
           Open Sidebar
         </div>
@@ -70,7 +70,7 @@ onMounted(() => {
           <Icon icon="line-md:cog" style="font-size: 21px" />
 
           <div
-            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity duration-200 z-50"
+            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
           >
             Profile Config
           </div>
@@ -82,7 +82,7 @@ onMounted(() => {
         >
           <Icon icon="line-md:clipboard-list" style="font-size: 21px" />
           <div
-            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity duration-200 z-50"
+            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
           >
             Document Lists
           </div>
@@ -94,7 +94,7 @@ onMounted(() => {
         >
           <Icon icon="line-md:cloud-alt-upload" style="font-size: 21px" />
           <div
-            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity duration-200 z-50"
+            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
           >
             Upload Document
           </div>
@@ -105,7 +105,7 @@ onMounted(() => {
       <div class="group relative flex flex-col items-center gap-2 justify-center font-mono">
         <Icon icon="material-symbols:account-circle" style="font-size: 21px"> </Icon>
         <div
-          class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-md px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity duration-200 z-50"
+          class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-md px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
         >
           <div class="flex flex-row gap-2">
             <span v-if="profile">

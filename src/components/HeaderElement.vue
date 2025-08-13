@@ -99,6 +99,30 @@ onMounted(() => {
             Upload Document
           </div>
         </RouterLink>
+        <RouterLink
+          :to="{ name: 'request-sign' }"
+          class="relative group font-bold font-mono text-blue-200 gap-2 hover:bg-neutral-800 p-1 rounded-md"
+          activeClass="underline text-blue-400"
+        >
+          <Icon icon="line-md:clipboard-check" style="font-size: 21px" />
+          <div
+            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
+          >
+            Request Signed Document
+          </div>
+        </RouterLink>
+        <RouterLink
+          :to="{ name: 'request-sign-test' }"
+          class="relative group font-bold font-mono text-blue-200 gap-2 hover:bg-neutral-800 p-1 rounded-md"
+          activeClass="underline text-blue-400"
+        >
+          <Icon icon="line-md:folder-arrow-right-filled" style="font-size: 21px" />
+          <div
+            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
+          >
+            Request Signed Document TEST FILE
+          </div>
+        </RouterLink>
       </div>
     </div>
     <div id="bottom-icons" class="pt-10">

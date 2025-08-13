@@ -24,6 +24,21 @@ const router = createRouter({
       name: 'upload-documents',
       component: () => import('@/views/DocUploadView.vue'),
     },
+    {
+      path: '/request_sign',
+      name: 'request-sign',
+      component: () => import('@/views/DocSignView.vue'),
+    },
+    {
+      path: '/request_sign_test',
+      name: 'request-sign-test',
+      component: () => import('@/views/DocSignViewFile.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('@/views/NotFound.vue'),
+    },
 
     // {
     //   path: '/about',

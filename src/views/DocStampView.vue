@@ -5,54 +5,56 @@ import api from '@/./api/index.js'
 const loading = ref(false)
 const error = ref<string | null>(null)
 
-const postSignDocument = async () => {
+const postStampDocument = async () => {
   loading.value = true
 
   //build form data
   try {
     const payload = {
-      doc: 'JVBERi0xLjQKJf//////AAAAAAo', // Base64 PDF
-      filename: 'filename_2.pdf',
-      signers: [
+      doc: [
+        'JVBERi0xLjQKJf//////AAAAAAoxIDAgb2JqCjw8Ci9DcmVhdG9yIDxmZWZmMDA19qA5+nHFrxojtqG8DWPHbXMWcQhp/S8TrnP',
+      ],
+      filename: 'punya ainul.pdf',
+      meterai: [],
+      annotations: [
         {
-          name: 'Signer 1',
-          email: 'egatesting1@yopmail.com',
-          phone_number: {
-            country_code: '62',
-            number: '+6282103452716',
-          },
-          annotations: [
-            {
-              type_of: 'signature',
-              page: 1,
-              position_x: 40,
-              position_y: 40,
-              element_width: 120,
-              element_height: 100,
-              canvas_width: 595,
-              canvas_height: 841,
-              auto_fields: ['date_signed', 'name', 'email', 'company'],
-            },
-            {
-              type_of: 'meterai',
-              page: 1,
-              position_x: 40,
-              position_y: 40,
-              element_width: 120,
-              element_height: 100,
-              canvas_width: 595,
-              canvas_height: 841,
-              meterai_provided: true,
-            },
-          ],
+          page: 1,
+          position_x: 100,
+          position_y: 100,
+          element_width: 80,
+          element_height: 80,
+          canvas_width: 595,
+          canvas_height: 841,
+          type_of: 'meterai',
         },
       ],
-      signing_order: false,
-      callback_url: 'https://3a993956ff73.ngrok-free.app/documents/callback',
-      is_signature_without_frame: false,
+      callback_url: 'https://webhook.site/88c3e61d-eacd-48d6-9093-9850c07c2b3c',
+      document_deadline: {
+        // optional
+        signing_deadline: 7, // value min 3 - max 31
+        recurring_reminder: 'weekly', // option (none, daily, three_days, weekly, monthly)
+        days_reminder_after_received: 7, // value min 1 - max 31
+      },
+      document_validity: {
+        // optional
+        date_end: {
+          key: 'specified_date', // option (no_expiration, relative_to_effective_date, specified_date)
+          value: '2025-07-04',
+        },
+        date_start: {
+          key: 'day_after_completed', // option (immediately_after_completed, day_after_completed, specified_date)
+          value: '1.days',
+        },
+        recurring_reminder: 'weekly', // option (none, daily, three_days, weekly, monthly)
+        doc_maker_notification: true,
+        duration_reminder_unit: 'days', // option (days, weeks, months)
+        duration_reminder_value: '10',
+        days_reminder_before_ended: null,
+      },
     }
+    //  =========
 
-    const response = await api.post(`/requestSign`, payload, {
+    const response = await api.post(`/requestStamp`, payload, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -73,13 +75,13 @@ const postSignDocument = async () => {
   >
     <div class="mx-auto flex justify-center gap-2 flex-col">
       <div class="pb-2">
-        <h1 class="text-xl font-bold text-gray-200">Sign Document</h1>
-        <p class="text-sm text-gray-500">Upload a document to be signed</p>
+        <h1 class="text-xl font-bold text-gray-200">STAMP Document</h1>
+        <p class="text-sm text-gray-500">Upload a document to be Stamped</p>
       </div>
       <div class="flex flex-row gap-5 py-3 px-2 rounded-md border-1 border-gray-500 border-dashed">
         <button
           class="cursor-pointer bg-blue-600 hover:bg-blue-300 disabled:bg-gray-700 text-white px-6 py-2 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
-          @click="postSignDocument()"
+          @click="postStampDocument()"
         >
           <span v-if="loading" class="flex items-center">
             <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
@@ -99,7 +101,7 @@ const postSignDocument = async () => {
             </svg>
             Loading...
           </span>
-          <span v-else>Sign Document (Dummy Data)</span>
+          <span v-else>Stamp Document (Dummy Data)</span>
         </button>
       </div>
     </div>

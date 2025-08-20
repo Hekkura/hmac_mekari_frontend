@@ -123,6 +123,30 @@ onMounted(() => {
             Request Signed Document TEST FILE
           </div>
         </RouterLink>
+        <RouterLink
+          :to="{ name: 'request-stamp' }"
+          class="relative group font-bold font-mono text-blue-200 gap-2 hover:bg-neutral-800 p-1 rounded-md"
+          activeClass="underline text-blue-400"
+        >
+          <Icon icon="line-md:list-3" style="font-size: 21px" />
+          <div
+            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
+          >
+            Request Stamp 1
+          </div>
+        </RouterLink>
+        <RouterLink
+          :to="{ name: 'request-stamp-test' }"
+          class="relative group font-bold font-mono text-blue-200 gap-2 hover:bg-neutral-800 p-1 rounded-md"
+          activeClass="underline text-blue-400"
+        >
+          <Icon icon="line-md:folder-arrow-right" style="font-size: 21px" />
+          <div
+            class="absolute left-9 top-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md hidden group-hover:inline-block whitespace-nowrap transition-opacity duration-200 z-50"
+          >
+            Request Stamp WITH FILE!
+          </div>
+        </RouterLink>
       </div>
     </div>
     <div id="bottom-icons" class="pt-10">

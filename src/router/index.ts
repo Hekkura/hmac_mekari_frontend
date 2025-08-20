@@ -35,6 +35,16 @@ const router = createRouter({
       component: () => import('@/views/DocSignViewFile.vue'),
     },
     {
+      path: '/request_stamp',
+      name: 'request-stamp',
+      component: () => import('@/views/DocStampView.vue'),
+    },
+    {
+      path: '/request_stamp-test',
+      name: 'request-stamp-test',
+      component: () => import('@/views/DocStampViewFile.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: () => import('@/views/NotFound.vue'),
